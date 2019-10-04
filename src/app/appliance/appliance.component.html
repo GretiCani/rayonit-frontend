@@ -1,0 +1,82 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+  <div class="col-md-8">
+    <form [formGroup]="applianceForm" (submit)="submitForm()">
+      <div class="card" >
+        <div class="card-header">
+          <h5 class="title text-danger">Add Appliance</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+              <div class="col-md-6 pr-1">
+                <div class="form-group">
+                  <label>Name</label>
+                  <input formControlName="name" type="text" class="form-control" >
+                </div>
+              </div>
+              <div class="col-md-3 pl-1">
+                <div class="form-group">
+                  <label>Type</label>
+                  <input formControlName="type" type="text" class="form-control">
+                </div>
+              </div>
+              <div class="col-md-3 pl-1">
+                <div class="form-group">
+                  <label>Location</label>
+                  <input formControlName="location" type="text" class="form-control"  >
+                </div>
+              </div>
+            
+            </div>
+               <h6 class="title text-danger">Attributes  
+                 <button type="button" (click)="addAttribute()" class="btn btn-danger btn-round float-right"><i class="fa fa-plus"></i></button>
+               </h6>
+              
+            <hr >
+            <div class="row" formArrayName="attributes" >
+              <div class="row" *ngFor="let attribute of attributeFormGroup.controls; let i = index;">
+                <div  class="row" style="margin-left: 2rem" [formGroupName]="i">
+              <div class="col-md-4 pr-1">
+                <div class="form-group">
+                  <label>Name</label>
+                  <input formControlName="name" type="text" class="form-control">
+                </div>
+              </div>
+              <div class="col-md-2 px-1">
+                <div class="form-group">
+                  <label>Min</label>
+                  <input formControlName="min" type="number" class="form-control">
+                </div>
+              </div>
+              <div class="col-md-2 pl-1">
+                <div class="form-group">
+                  <label>Max</label>
+                  <input formControlName="max" type="number" class="form-control">
+                </div>
+              </div>
+              <div class="col-md-2 pl-1">
+                  <div class="form-group">
+                    <label>Current</label>
+                    <input formControlName="current" type="number" class="form-control">
+                  </div>
+                </div>
+                <div class="col-md-2 pl-1">
+                    <div class="form-group">
+                    <button type="button" (click)="removeAttribute(i)" class="btn btn-danger btn-round float-left" style="margin-top: 1rem"><i class="fa fa-minus"></i></button>
+                  </div>
+                  </div>
+                </div>
+                </div>
+            </div>
+            <hr>
+                <button type="submit"  [disabled]="!applianceForm.valid" class="btn btn-danger btn-round float-right">Submit</button>
+            
+        </div>
+      </div>
+    </form>
+    </div>
+   
+  </div>
+</div>

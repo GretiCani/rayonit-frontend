@@ -1,0 +1,60 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title text-center text-danger">Your Home Appliances </h2>
+        </div>
+      <div class="card-body">
+    <div class="row">
+       <div class="col-lg-12 ml-auto mr-auto">
+          <div class="row">
+              
+            <div class="col-md-4" *ngFor="let appliance of appliances">
+                  <div class="card"  >
+                    <div class="card-header ">
+                      <small ><b>location :</b></small>{{appliance.location.location}}  | 
+                      <small><b>type :</b></small> {{appliance.type.name}}
+                    </div>
+                    <div class="card-body">
+                      <h6 class="card-title text-danger" >{{appliance.name}}</h6>
+                      <div  *ngIf="appliance.state">
+                      <ul class="list-group list-group-flush"  *ngFor="let attribute  of appliance.attributes" >
+                        <li class="list-group-item">
+                          <i class="fa fa-minus" (click)="decrementValue(attribute.id)" style="cursor: pointer">{{attribute.name}}</i>
+                            <label style="margin-left: 5rem">
+                              state: <b class="text-danger">{{attribute.current}}</b></label>
+                              <i class="fa fa-plus float-right" (click)="incrementValue(attribute.id)" style="cursor: pointer"></i> 
+                        </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="card-footer">
+                      <h2 class="card-title text-center text-danger"
+                          *ngIf="appliance.state">ON </h2>
+                      <h2 class="card-title text-center text-danger"
+                          *ngIf="!appliance.state">OFF </h2>
+                          <div *ngFor="let attribute  of appliance.attributes">
+                          <div class="alert alert-danger" *ngIf="attribute.current >= attribute.max && appliance.state">
+                            <span>
+                              <b><i> {{attribute.name}} </i></b>  is in high state! </span>
+                          </div>  
+                        </div>     
+                        <div *ngFor="let attribute  of appliance.attributes">
+                          <div class="alert alert-danger" *ngIf="attribute.current <= attribute.min && appliance.state">
+                            <span>
+                              <b><i> {{attribute.name}} </i></b>  is in low state! </span>
+                          </div>  
+                        </div> 
+                    </div>
+                   </div>
+               </div>
+              
+  
+          </div>
+       </div>
+    </div>
+  
+  </div>
+  </div>
+  </div>

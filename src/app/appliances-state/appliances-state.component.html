@@ -1,0 +1,48 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="card">
+    <div class="card-body">
+      <h2 class="card-title text-center">Appliances State</h2>
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table">
+            <thead class=" text-primary">
+                <th>ID</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Location</th>
+                <th>Nr.attributes</th>
+                <th class="text-right"></th>
+            </thead>
+            <tbody>
+              <tr *ngFor='let appliance of appliances'>
+                <td><b>{{appliance.id}}</b></td>
+                <td><a class="text-danger"><b>{{appliance.name}}</b></a> </td>
+                <td>{{appliance.type.name}}</td>
+                <td >{{appliance.location.location}}</td>
+                <td>{{appliance.attributes.length}}</td>
+                <td >
+                <button type="button" class="btn btn-round " [ngClass]="{'btn-default ':!appliance.state, 
+                                                                         'btn-danger ':appliance.state}" 
+                (click)='turnOnOf(appliance.id)'>
+                  <div *ngIf="appliance.state">ON</div>
+                  <div *ngIf="!appliance.state">OFF</div>
+                </button>            
+                </td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+</div>
